@@ -3,5 +3,36 @@
         <title>无人等候 | 无人等候</title>
         <link>https://imscba.github.io/</link>
         <description>无人等候 | 无人等候</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><atom:link href="https://imscba.github.io/" rel="self" type="application/rss+xml" /></channel>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><atom:link href="https://imscba.github.io/" rel="self" type="application/rss+xml" /><item>
+                <title></title>
+                <link>https://imscba.github.io/about/</link>
+                <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate><guid>https://imscba.github.io/about/</guid>
+                <description>&lt;h1 id=&#34;center我center&#34;&gt;&lt;center&gt;我&lt;/center&gt;&lt;/h1&gt;
+&lt;h1 id=&#34;教育背景&#34;&gt;教育背景&lt;/h1&gt;
+&lt;p&gt;中国科学院心理研究所 &lt;br&gt;
+应用心理硕士 &lt;br&gt;
+2014.09-2017.07  &lt;br&gt;
+兰州大学 &lt;br&gt;
+教育学学士(应用心理学)&lt;br&gt;
+2010.09-2013.07  &lt;br&gt;
+兰州大学 &lt;br&gt;
+管理学学士 (旅游管理) &lt;br&gt;
+2009.09-2013.07&lt;/p&gt;
+&lt;h1 id=&#34;专业技能&#34;&gt;专业技能&lt;/h1&gt;
+&lt;p&gt;MySQL：在MySQL环境下对数据进行增删改查&lt;br&gt;
+HiveQL：在Hive环境下进行数据提取 &lt;br&gt;
+Excel：使用各公式、图表可视化&lt;br&gt;
+SPSS：数据分析&lt;br&gt;
+Python : NumPy、Pandas、Matplotlib&lt;br&gt;
+Tableau：数据可视化工具
+PPT：制作各类数据图表与数据分析报告
+常用定量与定性研究方法、常用数据分析方法与统计学知识 &lt;br&gt;
+商业分析：电商、游戏、行业研究、消费者调研、用户画像、A/B test&lt;/p&gt;
+&lt;h1 id=&#34;联系方式&#34;&gt;联系方式&lt;/h1&gt;
+&lt;p&gt;email : &lt;a href=&#34;mailto:im.wys@outlook.com&#34;&gt;im.wys@outlook.com&lt;/a&gt;&lt;br&gt;
+wechat : 001 408 409 5775&lt;br&gt;
+QQ : 779860110&lt;br&gt;
+Add : 上海市浦东新区&lt;/p&gt;
+</description>
+            </item></channel>
 </rss>
