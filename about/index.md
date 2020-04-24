@@ -16,18 +16,18 @@
 2009.09-2013.07
 
 # 专业技能
-MySQL：在MySQL环境下对数据进行增删改查  
-HiveQL：在Hive环境下进行数据提取    
-Excel：使用各公式、图表可视化   
+MySQL：MySQL环境下对数据进行增删改查  
+HiveQL：Hive环境下进行数据提取    
+Excel：各公式、图表可视化   
 SPSS：数据分析  
 Python : NumPy、Pandas、Matplotlib  
-Tableau：数据可视化工具 
+Tableau：数据可视化 
 PPT：制作各类数据图表与数据分析报告 
 常用定量与定性研究方法、常用数据分析方法与统计学知识    
 商业分析：电商、游戏、行业研究、消费者调研、用户画像、A/B test  
 
 # 联系方式
-email : im.wys@outlook.com  
+email : 779860110@qq.com  
 wechat : 001 408 409 5775   
 QQ : 779860110  
 Add : 上海市浦东新区
