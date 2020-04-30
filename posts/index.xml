@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 无人等候</title>
+    <link>https://imscba.github.io/posts/</link>
+    <description>Recent content in Posts on 无人等候</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 30 Apr 2020 15:35:21 +0800</lastBuildDate>
+    
+	<atom:link href="https://imscba.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Pandas练习_1</title>
+      <link>https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_1/</link>
+      <pubDate>Thu, 30 Apr 2020 15:35:21 +0800</pubDate>
+      
+      <guid>https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_1/</guid>
+      <description>Ex1 - Getting and Knowing your Data This time we are going to pull data directly from the internet. Special thanks to: https://github.com/justmarkham for sharing the dataset and materials. Step 1. Import the necessary libraries / 导入必要的包 1 2 import pandas as pd import numpy as np Step 2. Import the dataset from this address . / 导入数据 Step 3. Assign it</description>
+    </item>
+    
+  </channel>
+</rss>
