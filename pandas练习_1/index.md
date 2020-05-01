@@ -248,14 +248,3 @@ chipo.item_name.value_counts().count()
 ```
 
 
-ld? /一共订购了多少不同种类的商品
-
-```
-chipo.item_name.value_counts().count()
-```
-
-```
-50
-```
-
-
