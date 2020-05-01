@@ -1,7 +1,7 @@
 # Pandas练习_1_1
 
 
-# Ex1 - Getting and Knowing your Data
+# Ex1_1 - Getting and Knowing your Data
 
 ### Step 1. Go to https://www.kaggle.com/openfoodfacts/world-food-facts/data  / 从该网址下载源数据，我已经上传至百度网盘，方便没有kaggle账号的朋友下载。
 
@@ -34,7 +34,7 @@ food = pd.read_csv('D:/Python/pandas_exercises/01_Getting_&_Knowing_Your_Data/Wo
 food.head(5)
 ```
 
-[food.head](https://raw.githubusercontent.com/imscba/PicGoimg/master/img/head.png)
+![food.head](https://raw.githubusercontent.com/imscba/PicGoimg/master/img/head.png)
 
 
 

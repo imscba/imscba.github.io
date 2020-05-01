@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Pandas练习_1_3 | 无人等候</title>
+        <meta name="Description" content="关于 LoveIt 主题"><meta property="og:title" content="Pandas练习_1_3" />
+<meta property="og:description" content="Ex1_3 - Getting and Knowing your Data This time we are going to pull data directly from the internet. Special thanks to: https://github.com/justmarkham for sharing the dataset and materials. Step 1. Import the necessary libraries / 导入必要的包 1 2 import pandas as pd import numpy as np Step 2. Import the dataset from this address . / 从该地址导入数据" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_1_3/" />
+<meta property="article:published_time" content="2020-05-01T17:16:15+08:00" />
+<meta property="article:modified_time" content="2020-05-01T17:16:15+08:00" /><meta property="og:site_name" content="无人等候" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Pandas练习_1_3"/>
+<meta name="twitter:description" content="Ex1_3 - Getting and Knowing your Data This time we are going to pull data directly from the internet. Special thanks to: https://github.com/justmarkham for sharing the dataset and materials. Step 1. Import the necessary libraries / 导入必要的包 1 2 import pandas as pd import numpy as np Step 2. Import the dataset from this address . / 从该地址导入数据"/>
+<meta name="theme-color" content="#ffffff">
+<meta name="msapplication-TileColor" content="#da532c">
+<link rel="canonical" href="https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_1_3/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="prev" href="https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_1_1/" /><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/css/style.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Pandas练习_1_3",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imscba.github.io\/pandas%E7%BB%83%E4%B9%A0_1_3\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "https:\/\/imscba.github.io\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","keywords": "Python, Pandas, 数据分析","wordcount":  1465 ,
+        "url": "https:\/\/imscba.github.io\/pandas%E7%BB%83%E4%B9%A0_1_3\/","datePublished": "2020-05-01","dateModified": "2020-05-01","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                "@type": "Organization",
+                "name": "Yanshen",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/imscba.github.io\/logo.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"author": {
+                "@type": "Person",
+                "name": "Yaoshi"
+            },"description": ""
+    }
+    </script></head>
+    <body><script>
+            if (!window.localStorage || !window.localStorage.getItem('theme')) {window.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;} else {
+                window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            }
+            window.isDark && document.body.classList.add('dark-theme');
+        </script><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/">无人等候</a>
+        </div>
+        <div class="menu"><a class="menu-item" href="/posts/" rel="noopener noreffer">文章</a><a class="menu-item" href="/tags/" rel="noopener noreffer">标签</a><a class="menu-item" href="/categories/" rel="noopener noreffer">分类</a><a class="menu-item" href="/about/" rel="noopener noreffer">关于</a><span class="menu-item">|</span>
+            <a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-wrapper">
+        <div class="header-container">
+            <div class="header-title">
+                <a href="/">无人等候</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="" rel="noopener noreffer">文章</a><a class="menu-item" href="/tags/" title="" rel="noopener noreffer">标签</a><a class="menu-item" href="/categories/" title="" rel="noopener noreffer">分类</a><a class="menu-item" href="/about/" title="" rel="noopener noreffer">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+
+<script>
+    window.desktopHeaderMode = "fixed";
+    window.mobileHeaderMode = "auto";
+</script>
+<script src="https://cdn.jsdelivr.net/gh/yremp/yremp-js@1.5/sakura.js"></script><main class="main">
+                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">Pandas练习_1_3</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Yaoshi</a>
+</span>&nbsp;
+                    <span class="post-category">收录于<a href="/categories/python">
+                                <i class="far fa-folder fa-fw"></i>Python
+                            </a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-05-01>2020-05-01</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1465 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 3 分钟&nbsp;<span id="/pandas%E7%BB%83%E4%B9%A0_1_3/" class="leancloud_visitors" data-flag-title="Pandas练习_1_3">
+                        <i class="far fa-eye fa-fw"></i><span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="content" id="content"><h1 id="ex1_3---getting-and-knowing-your-data">Ex1_3 - Getting and Knowing your Data</h1>
+<p>This time we are going to pull data directly from the internet. Special thanks to: <a href="https://github.com/justmarkham">https://github.com/justmarkham</a> for sharing the dataset and materials.</p>
+<h3 id="step-1-import-the-necessary-libraries---导入必要的包">Step 1. Import the necessary libraries  / 导入必要的包</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-2-import-the-dataset-from-this-addresshttpsrawgithubusercontentcomjustmarkhamdat8masterdatauuser--从该地址导入数据集">Step 2. Import the dataset from this <a href="https://raw.githubusercontent.com/justmarkham/DAT8/master/data/u.user" target="_blank" rel="noopener noreffer">address</a>
+. / 从该地址导入数据集</h3>
+<h3 id="step-3-assign-it-to-a-variable-called-users-and-use-the-user_id-as-index--将数据集命名为users并将user_id作为索引">Step 3. Assign it to a variable called users and use the &lsquo;user_id&rsquo; as index / 将数据集命名为&rsquo;users&rsquo;，并将‘user_id’作为索引</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Solution 1</span>
+<span class="n">url</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/justmarkham/DAT8/master/data/u.user&#39;</span><span class="p">)</span>
+<span class="n">users</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span> <span class="s1">&#39;user_id&#39;</span><span class="p">)</span> <span class="c1"># 注意这里使用的是read_table,我是看了答案才知道使用table.</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Solution 2 上面的答案可以简化,我是受上一篇文章的影响,多定义了url变量</span>
+<span class="n">users</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/justmarkham/DAT8/master/data/u.user&#39;</span><span class="p">,</span><span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="s1">&#39;user_id&#39;</span><span class="p">)</span> <span class="c1"># sep分隔符需要自己看数据集得到&#39;|&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-4-see-the-first-25-entries--查看前25行记录">Step 4. See the first 25 entries / 查看前25行记录</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">users</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">	age	gender	occupation	zip_code
+user_id				
+1	24	M	technician	85711
+2	53	F	other	94043
+3	23	M	writer	32067
+4	24	M	technician	43537
+5	33	F	other	15213
+6	42	M	executive	98101
+7	57	M	administrator	91344
+8	36	M	administrator	05201
+9	29	M	student	01002
+10	53	M	lawyer	90703
+11	39	F	other	30329
+12	28	F	other	06405
+13	47	M	educator	29206
+14	45	M	scientist	55106
+15	49	F	educator	97301
+16	21	M	entertainment	10309
+17	30	M	programmer	06355
+18	35	F	other	37212
+19	40	M	librarian	02138
+20	42	F	homemaker	95660
+21	26	M	writer	30068
+22	25	M	writer	40206
+23	30	F	artist	48197
+24	21	F	artist	94533
+25	39	M	engineer	55107
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-5-see-the-last-10-entries--查看倒数10行记录">Step 5. See the last 10 entries / 查看倒数10行记录</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">user</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># 我想当然认为这样可以,结果如下,显示的是全部数据</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">	age	gender	occupation	zip_code
+user_id				
+1	24	M	technician	85711
+2	53	F	other	94043
+3	23	M	writer	32067
+4	24	M	technician	43537
+5	33	F	other	15213
+...	...	...	...	...
+929	44	M	scientist	53711
+930	28	F	scientist	07310
+931	60	M	educator	33556
+932	58	M	educator	06437
+933	28	M	student	48105
+
+933 rows × 4 columns
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">users</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#正确写法</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">	age	gender	occupation	zip_code
+user_id				
+934	61	M	engineer	22902
+935	42	M	doctor	66221
+936	24	M	other	32789
+937	48	M	educator	98072
+938	38	F	technician	55038
+939	26	F	student	33319
+940	32	M	administrator	02215
+941	20	M	student	97229
+942	48	F	librarian	78209
+943	22	M	student	77841
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-6-what-is-the-number-of-observations-in-the-dataset--数据集一共多少观测记录">Step 6. What is the number of observations in the dataset? / 数据集一共多少观测记录</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Solution 1</span>
+<span class="n">users</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">943
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Solution 2</span>
+<span class="n">users</span><span class="o">.</span><span class="n">shape</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">(943, 4)
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Solution 3</span>
+<span class="n">users</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 943 entries, 1 to 943
+Data columns (total 4 columns):
+age           943 non-null int64
+gender        943 non-null object
+occupation    943 non-null object
+zip_code      943 non-null object
+dtypes: int64(1), object(3)
+memory usage: 76.8+ KB
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-7-what-is-the-number-of-columns-in-the-dataset--数据集共有多少列">Step 7. What is the number of columns in the dataset? / 数据集共有多少列</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Solution 1</span>
+<span class="n">users</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">4
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Solution 2</span>
+<span class="n">users</span><span class="o">.</span><span class="n">shape</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">(943, 4)
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Solution 3</span>
+<span class="n">user</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 943 entries, 1 to 943
+Data columns (total 4 columns):
+age           943 non-null int64
+gender        943 non-null object
+occupation    943 non-null object
+zip_code      943 non-null object
+dtypes: int64(1), object(3)
+memory usage: 76.8+ KB
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-8-print-the-name-of-all-the-columns--输出列名">Step 8. Print the name of all the columns. / 输出列名</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">users</span><span class="o">.</span><span class="n">columns</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Index([&#39;age&#39;, &#39;gender&#39;, &#39;occupation&#39;, &#39;zip_code&#39;], dtype=&#39;object&#39;)
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-9-how-is-the-dataset-indexed---数据集的索引方式">Step 9. How is the dataset indexed?  / 数据集的索引方式</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">users</span><span class="o">.</span><span class="n">index</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Int64Index([  1,   2,   3,   4,   5,   6,   7,   8,   9,  10,
+            ...
+            934, 935, 936, 937, 938, 939, 940, 941, 942, 943],
+           dtype=&#39;int64&#39;, name=&#39;user_id&#39;, length=943)
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-10-what-is-the-data-type-of-each-column--每一列数据的数据类型">Step 10. What is the data type of each column? / 每一列数据的数据类型</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">users</span><span class="o">.</span><span class="n">dtypes</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">age            int64
+gender        object
+occupation    object
+zip_code      object
+dtype: object
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-11-print-only-the-occupation-column--仅输出occupation列">Step 11. Print only the occupation column / 仅输出&rsquo;occupation'列</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">users</span><span class="o">.</span><span class="n">occupation</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">user_id
+1         technician
+2              other
+3             writer
+4         technician
+5              other
+           ...      
+939          student
+940    administrator
+941          student
+942        librarian
+943          student
+Name: occupation, Length: 943, dtype: object
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-12-how-many-different-occupations-there-are-in-this-dataset--数据集中共有多少不同职业occupation">Step 12. How many different occupations there are in this dataset? / 数据集中共有多少不同职业(occupation)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">users</span><span class="o">.</span><span class="n">occupation</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="c1"># 确实不知道这种用法, 还想用计数的办法,也没想出来</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">21
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-13-what-is-the-most-frequent-occupation--最多的职业">Step 13. What is the most frequent occupation? / 最多的职业</h3>
+<blockquote>
+<p>开始的思路是使用groupby来分组，但是没有结果，也没搞清楚原因</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">users</span><span class="o">.</span><span class="n">occupation</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">student          196
+other            105
+educator          95
+administrator     79
+engineer          67
+programmer        66
+librarian         51
+writer            45
+executive         32
+scientist         31
+artist            28
+technician        27
+marketing         26
+entertainment     18
+healthcare        16
+retired           14
+lawyer            12
+salesman          12
+none               9
+homemaker          7
+doctor             7
+Name: occupation, dtype: int64
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 精确输出出现频次最高的职业</span>
+<span class="n">users</span><span class="o">.</span><span class="n">occupation</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">student    196
+Name: occupation, dtype: int64
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-14-summarize-the-dataframe---概述数据集">Step 14. Summarize the DataFrame. /  概述数据集</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">users</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span> <span class="c1"># 有数据的列才会返回结果</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">        age
+count	943.000000
+mean	34.051962
+std	    12.192740
+min	    7.000000
+25%	    25.000000
+50%	    31.000000
+75%	    43.000000
+max	    73.000000
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-15-summarize-all-the-columns--概述每一列">Step 15. Summarize all the columns / 概述每一列</h3>
+<blockquote>
+<p>没有太理解这题，反正记住这个操作就好了</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">users</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span> <span class="o">=</span> <span class="s1">&#39;all&#39;</span><span class="p">)</span>  <span class="c1"># 有数据的列才会返回结果</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">        age	        gender	occupation	zip_code
+count	943.000000	943	         943	943
+unique	NaN	        2	          21	795
+top	    NaN	        M	     student	55414
+freq	NaN	        670	         196	9
+mean	34.051962	NaN	         NaN	NaN
+std	    12.192740	NaN	         NaN	NaN
+min	    7.000000	NaN	         NaN	NaN
+25%	    25.000000	NaN	         NaN	NaN
+50%	   31.000000	NaN	         NaN	NaN
+75%	   43.000000	NaN	         NaN	NaN
+max	   73.000000	NaN	         NaN	NaN
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-16-summarize-only-the-occupation-column--概述occupation列">Step 16. Summarize only the occupation column / 概述occupation列</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">users</span><span class="o">.</span><span class="n">occupation</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">count         943
+unique         21
+top       student
+freq          196
+Name: occupation, dtype: object
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-17-what-is-the-mean-age-of-users--用户的平均年龄">Step 17. What is the mean age of users? / 用户的平均年龄</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">users</span><span class="o">.</span><span class="n">age</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">34.05196182396607
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-18-what-is-the-age-with-least-occurrence--出现次数最少的年龄">Step 18. What is the age with least occurrence? / 出现次数最少的年龄</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">users</span><span class="o">.</span><span class="n">age</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">11    1
+10    1
+73    1
+66    1
+7     1
+Name: age, dtype: int64
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-05-01 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/pandas%E7%BB%83%E4%B9%A0_1_3/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/python">Python</a>,&nbsp;<a href="/tags/pandas">Pandas</a>,&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90">数据分析</a></section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/pandas%E7%BB%83%E4%B9%A0_1_1/" class="prev" rel="prev" title="Pandas练习_1_1"><i class="fas fa-angle-left fa-fw"></i>Pandas练习_1_1</a></div>
+</div>
+<div class="comment"><div id="valine"></div><script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                new Valine({
+                    el: '#valine',
+                    appId: 'QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI',
+                    appKey: 'WBmoGyJtbqUswvfLh6L8iEBr',placeholder: '你的评论 ...',verify: true,avatar: 'mp',pageSize: 10,lang: 'zh-cn',visitor: true,recordIP: true,});
+            });
+        </script>
+        <noscript>
+            Please enable JavaScript to view the <a href="https://valine.js.org/">comments powered by Valine.</a>
+        </noscript></div>
+    </article></div>
+            </main><footer class="footer">
+    <div class="copyright"><div class="copyright-line">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer"><i class="far fa-heart fa-fw"></i> LoveIt</a>
+        </div>
+
+        <div class="copyright-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Yanshen</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+</div><a href="#" class="dynamic-to-top animated faster" id="dynamic-to-top">
+            <i class="fas fa-chevron-up fa-fw"></i>
+        </a><script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lightGallery(document.getElementById('content'), {
+                selector: '.lightgallery',
+                speed: 400,
+                hideBarsDelay: 2000,
+                thumbnail: true,
+                exThumbImage: 'data-thumbnail',
+                thumbWidth: 80,
+                thumbContHeight: 80,
+            });
+        });
+    </script><link rel="stylesheet" href="/lib/valine/valine.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script src="/lib/valine/Valine.min.js"></script><script src="/lib/smooth-scroll/smooth-scroll.polyfills.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/js/theme.min.js"></script></body>
+</html>

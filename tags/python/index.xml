@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Fri, 01 May 2020 16:41:15 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 01 May 2020 17:16:15 +0800</lastBuildDate>
     
 	<atom:link href="https://imscba.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Pandas练习_1_3</title>
+      <link>https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_1_3/</link>
+      <pubDate>Fri, 01 May 2020 17:16:15 +0800</pubDate>
+      
+      <guid>https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_1_3/</guid>
+      <description>Ex1_3 - Getting and Knowing your Data This time we are going to pull data directly from the internet. Special thanks to: https://github.com/justmarkham for sharing the dataset and materials. Step 1. Import the necessary libraries / 导入必要的包 1 2 import pandas as pd import numpy as np Step 2. Import the dataset from this address . / 从该地址导入数据</description>
+    </item>
     
     <item>
       <title>Pandas练习_1_1</title>
@@ -18,7 +27,7 @@
       <pubDate>Fri, 01 May 2020 16:41:15 +0800</pubDate>
       
       <guid>https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_1_1/</guid>
-      <description>Ex1 - Getting and Knowing your Data Step 1. Go to https://www.kaggle.com/openfoodfacts/world-food-facts/data / 从该网址下载源数据，我已经上传至百度网盘，方便没有kaggle账号的朋友下载。 1 2 链接：https://pan.b</description>
+      <description>Ex1_1 - Getting and Knowing your Data Step 1. Go to https://www.kaggle.com/openfoodfacts/world-food-facts/data / 从该网址下载源数据，我已经上传至百度网盘，方便没有kaggle账号的朋友下载。 1 2 链接：https://pan.b</description>
     </item>
     
     <item>
@@ -27,7 +36,7 @@
       <pubDate>Thu, 30 Apr 2020 15:35:21 +0800</pubDate>
       
       <guid>https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_1_2/</guid>
-      <description>Ex2 - Getting and Knowing your Data This time we are going to pull data directly from the internet. Special thanks to: https://github.com/justmarkham for sharing the dataset and materials. Step 1. Import the necessary libraries / 导入必要的包 1 2 import pandas as pd import numpy as np Step 2. Import the dataset from this address . / 导入数据 Step 3. Assign it</description>
+      <description>Ex1_2 - Getting and Knowing your Data This time we are going to pull data directly from the internet. Special thanks to: https://github.com/justmarkham for sharing the dataset and materials. Step 1. Import the necessary libraries / 导入必要的包 1 2 import pandas as pd import numpy as np Step 2. Import the dataset from this address . / 导入数据 Step 3. Assign it</description>
     </item>
     
   </channel>
