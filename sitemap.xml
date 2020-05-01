@@ -2,13 +2,14 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://imscba.github.io/categories/</loc><lastmod>2020-04-30T15:35:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://imscba.github.io/tags/pandas/</loc><lastmod>2020-04-30T15:35:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://imscba.github.io/categories/</loc><lastmod>2020-05-01T16:41:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://imscba.github.io/tags/pandas/</loc><lastmod>2020-05-01T16:41:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_1_1/</loc><lastmod>2020-05-01T16:41:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://imscba.github.io/posts/</loc><lastmod>2020-05-01T16:41:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://imscba.github.io/tags/python/</loc><lastmod>2020-05-01T16:41:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://imscba.github.io/categories/python/</loc><lastmod>2020-05-01T16:41:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://imscba.github.io/tags/</loc><lastmod>2020-05-01T16:41:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://imscba.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</loc><lastmod>2020-05-01T16:41:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://imscba.github.io/</loc><lastmod>2020-05-01T16:41:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_1_2/</loc><lastmod>2020-04-30T15:35:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://imscba.github.io/posts/</loc><lastmod>2020-04-30T15:35:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://imscba.github.io/tags/python/</loc><lastmod>2020-04-30T15:35:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://imscba.github.io/categories/python/</loc><lastmod>2020-04-30T15:35:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://imscba.github.io/tags/</loc><lastmod>2020-04-30T15:35:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://imscba.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</loc><lastmod>2020-04-30T15:35:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://imscba.github.io/</loc><lastmod>2020-04-30T15:35:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://imscba.github.io/about/</loc><priority>0</priority></url></urlset>

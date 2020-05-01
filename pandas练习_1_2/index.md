@@ -1,7 +1,7 @@
 # Pandas练习_1_2
 
 
-# Ex1 - Getting and Knowing your Data
+# Ex2 - Getting and Knowing your Data
 
 This time we are going to pull data directly from the internet. Special thanks to: https://github.com/justmarkham for sharing the dataset and materials.
 
