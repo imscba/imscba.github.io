@@ -14,10 +14,10 @@
     
     <item>
       <title>Pandas练习_1</title>
-      <link>https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_1/</link>
+      <link>https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_1_2/</link>
       <pubDate>Thu, 30 Apr 2020 15:35:21 +0800</pubDate>
       
-      <guid>https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_1/</guid>
+      <guid>https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_1_2/</guid>
       <description>Ex1 - Getting and Knowing your Data This time we are going to pull data directly from the internet. Special thanks to: https://github.com/justmarkham for sharing the dataset and materials. Step 1. Import the necessary libraries / 导入必要的包 1 2 import pandas as pd import numpy as np Step 2. Import the dataset from this address . / 导入数据 Step 3. Assign it</description>
     </item>
     
