@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Fri, 01 May 2020 17:16:15 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2020 21:18:46 +0800</lastBuildDate>
     
 	<atom:link href="https://imscba.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Pandas练习_2_1</title>
+      <link>https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_2_1/</link>
+      <pubDate>Sun, 03 May 2020 21:18:46 +0800</pubDate>
+      
+      <guid>https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_2_1/</guid>
+      <description>Ex2_1 - Filtering and Sorting Data This time we are going to pull data directly from the internet. Special thanks to: https://github.com/justmarkham for sharing the dataset and materials. Step 1. Import the necessary libraries / 导入必要的包 1 import pandas as pd Step 2. Import the dataset from this address . / 从该网址导入数据集 Step 3. Assign it to</description>
+    </item>
     
     <item>
       <title>Pandas练习_1_3</title>

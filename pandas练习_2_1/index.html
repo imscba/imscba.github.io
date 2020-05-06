@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Pandas练习_2_1 | 无人等候</title>
+        <meta name="Description" content="关于 LoveIt 主题"><meta property="og:title" content="Pandas练习_2_1" />
+<meta property="og:description" content="Ex2_1 - Filtering and Sorting Data This time we are going to pull data directly from the internet. Special thanks to: https://github.com/justmarkham for sharing the dataset and materials. Step 1. Import the necessary libraries / 导入必要的包 1 import pandas as pd Step 2. Import the dataset from this address . / 从该网址导入数据集 Step 3. Assign it to" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_2_1/" />
+<meta property="article:published_time" content="2020-05-03T21:18:46+08:00" />
+<meta property="article:modified_time" content="2020-05-03T21:18:46+08:00" /><meta property="og:site_name" content="无人等候" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Pandas练习_2_1"/>
+<meta name="twitter:description" content="Ex2_1 - Filtering and Sorting Data This time we are going to pull data directly from the internet. Special thanks to: https://github.com/justmarkham for sharing the dataset and materials. Step 1. Import the necessary libraries / 导入必要的包 1 import pandas as pd Step 2. Import the dataset from this address . / 从该网址导入数据集 Step 3. Assign it to"/>
+<meta name="theme-color" content="#ffffff">
+<meta name="msapplication-TileColor" content="#da532c">
+<link rel="canonical" href="https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_2_1/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="prev" href="https://imscba.github.io/pandas%E7%BB%83%E4%B9%A0_1_3/" /><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/css/style.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Pandas练习_2_1",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/imscba.github.io\/pandas%E7%BB%83%E4%B9%A0_2_1\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "https:\/\/imscba.github.io\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","keywords": "Python, Pandas, 数据分析","wordcount":  1193 ,
+        "url": "https:\/\/imscba.github.io\/pandas%E7%BB%83%E4%B9%A0_2_1\/","datePublished": "2020-05-03","dateModified": "2020-05-03","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                "@type": "Organization",
+                "name": "Yanshen",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/imscba.github.io\/logo.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"author": {
+                "@type": "Person",
+                "name": "Yaoshi"
+            },"description": ""
+    }
+    </script></head>
+    <body><script>
+            if (!window.localStorage || !window.localStorage.getItem('theme')) {window.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;} else {
+                window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            }
+            window.isDark && document.body.classList.add('dark-theme');
+        </script><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/">无人等候</a>
+        </div>
+        <div class="menu"><a class="menu-item" href="/posts/" rel="noopener noreffer">文章</a><a class="menu-item" href="/tags/" rel="noopener noreffer">标签</a><a class="menu-item" href="/categories/" rel="noopener noreffer">分类</a><a class="menu-item" href="/about/" rel="noopener noreffer">关于</a><span class="menu-item">|</span>
+            <a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-wrapper">
+        <div class="header-container">
+            <div class="header-title">
+                <a href="/">无人等候</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="" rel="noopener noreffer">文章</a><a class="menu-item" href="/tags/" title="" rel="noopener noreffer">标签</a><a class="menu-item" href="/categories/" title="" rel="noopener noreffer">分类</a><a class="menu-item" href="/about/" title="" rel="noopener noreffer">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+
+<script>
+    window.desktopHeaderMode = "fixed";
+    window.mobileHeaderMode = "auto";
+</script><main class="main">
+                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">Pandas练习_2_1</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Yaoshi</a>
+</span>&nbsp;
+                    <span class="post-category">收录于<a href="/categories/python">
+                                <i class="far fa-folder fa-fw"></i>Python
+                            </a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-05-03>2020-05-03</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1193 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 3 分钟&nbsp;<span id="/pandas%E7%BB%83%E4%B9%A0_2_1/" class="leancloud_visitors" data-flag-title="Pandas练习_2_1">
+                        <i class="far fa-eye fa-fw"></i><span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-sizes="auto"
+        data-srcset="https://raw.githubusercontent.com/imscba/PicGoimg/master/img/panda.jpg, https://raw.githubusercontent.com/imscba/PicGoimg/master/img/panda.jpg 1.5x, https://raw.githubusercontent.com/imscba/PicGoimg/master/img/panda.jpg 2x"
+        data-src="https://raw.githubusercontent.com/imscba/PicGoimg/master/img/panda.jpg"
+        alt=""
+        title="" /></div><div class="content" id="content"><h1 id="ex2_1---filtering-and-sorting-data">Ex2_1 - Filtering and Sorting Data</h1>
+<p>This time we are going to pull data directly from the internet. Special thanks to: <a href="https://github.com/justmarkham">https://github.com/justmarkham</a> for sharing the dataset and materials.</p>
+<h3 id="step-1-import-the-necessary-libraries--导入必要的包">Step 1. Import the necessary libraries / 导入必要的包</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-2-import-the-dataset-from-this-addresshttpsrawgithubusercontentcomjustmarkhamdat8masterdatachipotletsv--从该网址导入数据集">Step 2. Import the dataset from this <a href="https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv" target="_blank" rel="noopener noreffer">address</a>
+. / 从该网址导入数据集</h3>
+<h3 id="step-3-assign-it-to-a-variable-called-chipo--数据集命名为chipo">Step 3. Assign it to a variable called chipo. / 数据集命名为&quot;chipo&rdquo;</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">url</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv&#39;</span><span class="p">)</span>
+<span class="n">chipo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-4-how-many-products-cost-more-than-1000">Step 4. How many products cost more than $10.00?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 首先将item_price转换为float</span>
+<span class="n">prices</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">chipo</span><span class="o">.</span><span class="n">item_price</span><span class="p">]</span> <span class="c1"># float(value[1:-1])，value[1:-1]截取其中第2位到最后一位（不包含）——因为最前含有$符号、最后有空格</span>
+
+<span class="c1"># 转换后的价格重新分配到原来的item_price中</span>
+<span class="n">chipo</span><span class="o">.</span><span class="n">item_price</span> <span class="o">=</span> <span class="n">prices</span>
+
+<span class="c1"># 去除重复商品名、数量</span>
+<span class="n">chipo_filtered</span> <span class="o">=</span> <span class="n">chipo</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;item_name&#39;</span><span class="p">,</span><span class="s1">&#39;quantity&#39;</span><span class="p">])</span>
+
+<span class="c1"># 筛选数量为1的商品(我是没有想明白这一步的操作的合理性)</span>
+<span class="n">chipo_one_prod</span> <span class="o">=</span> <span class="n">chipo_filtered</span><span class="p">[</span><span class="n">chipo_filtered</span><span class="o">.</span><span class="n">quantity</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">chipo_one_prod</span><span class="p">[</span><span class="n">chipo_one_prod</span><span class="p">[</span><span class="s1">&#39;item_price&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">item_name</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">12
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-5-what-is-the-price-of-each-item">Step 5. What is the price of each item?</h3>
+<h6 id="print-a-data-frame-with-only-two-columns-item_name-and-item_price">print a data frame with only two columns item_name and item_price</h6>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 删除重复商品名、数量</span>
+<span class="n">chipo_filtered</span> <span class="o">=</span> <span class="n">chipo</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;items_name&#39;</span><span class="p">,</span><span class="s1">&#39;quantity&#39;</span><span class="p">])</span>
+
+<span class="c1"># 仅选择数量为1的商品</span>
+<span class="n">chipo_one_prod</span> <span class="o">=</span> <span class="n">chipo_filtered</span><span class="p">[</span><span class="n">chipo_filtered</span><span class="o">.</span><span class="n">quantity</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># 选择商品名称列和商品价格列</span>
+<span class="n">price_per_item</span> <span class="o">=</span> <span class="n">chipo_one_prod</span><span class="p">[[</span><span class="s1">&#39;item_name&#39;</span><span class="p">,</span><span class="s1">&#39;item_price&#39;</span><span class="p">]]</span>
+
+<span class="c1"># 价格从高到低排序</span>
+<span class="n">price_per_item_sorted</span> <span class="o">=</span> <span class="n">price_per_item</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">&#39;item_price&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
+
+<span class="n">price_per_item_sorted</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">	item_name	item_price
+606	Steak Salad Bowl	11.89
+1229	Barbacoa Salad Bowl	11.89
+1132	Carnitas Salad Bowl	11.89
+7	Steak Burrito	11.75
+168	Barbacoa Crispy Tacos	11.75
+39	Barbacoa Bowl	11.75
+738	Veggie Soft Tacos	11.25
+186	Veggie Salad Bowl	11.25
+62	Veggie Bowl	11.25
+57	Veggie Burrito	11.25
+250	Chicken Salad	10.98
+5	Chicken Bowl	10.98
+8	Steak Soft Tacos	9.25
+554	Carnitas Crispy Tacos	9.25
+237	Carnitas Soft Tacos	9.25
+56	Barbacoa Soft Tacos	9.25
+92	Steak Crispy Tacos	9.25
+664	Steak Salad	8.99
+54	Steak Bowl	8.99
+3750	Carnitas Salad	8.99
+21	Barbacoa Burrito	8.99
+27	Carnitas Burrito	8.99
+33	Carnitas Bowl	8.99
+11	Chicken Crispy Tacos	8.75
+12	Chicken Soft Tacos	8.75
+44	Chicken Salad Bowl	8.75
+1653	Veggie Crispy Tacos	8.49
+16	Chicken Burrito	8.49
+1694	Veggie Salad	8.49
+1414	Salad	7.40
+510	Burrito	7.40
+520	Crispy Tacos	7.40
+673	Bowl	7.40
+298	6 Pack Soft Drink	6.49
+10	Chips and Guacamole	4.45
+1	Izze	3.39
+2	Nantucket Nectar	3.39
+674	Chips and Mild Fresh Tomato Salsa	3.00
+111	Chips and Tomatillo Red Chili Salsa	2.95
+233	Chips and Roasted Chili Corn Salsa	2.95
+38	Chips and Tomatillo Green Chili Salsa	2.95
+3	Chips and Tomatillo-Green Chili Salsa	2.39
+300	Chips and Tomatillo-Red Chili Salsa	2.39
+191	Chips and Roasted Chili-Corn Salsa	2.39
+0	Chips and Fresh Tomato Salsa	2.39
+40	Chips	2.15
+6	Side of Chips	1.69
+263	Canned Soft Drink	1.25
+28	Canned Soda	1.09
+34	Bottled Water	1.09
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-6-sort-by-the-name-of-the-item">Step 6. Sort by the name of the item</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">chipo</span><span class="o">.</span><span class="n">item_name</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+
+<span class="c1"># 或</span>
+
+<span class="n">chipo</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">&#39;item_name&#39;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">	order_id	quantity	item_name	choice_description	item_price
+3389	1360	2	6 Pack Soft Drink	[Diet Coke]	12.98
+341		148	1	6 Pack Soft Drink	[Diet Coke]	6.49
+1849	749	1	6 Pack Soft Drink	[Coke]	6.49
+1860	754	1	6 Pack Soft Drink	[Diet Coke]	6.49
+2713	1076	1	6 Pack Soft Drink	[Coke]	6.49
+...	...	...	...	...	...
+1395	567	1	Veggie Soft Tacos	[Fresh Tomato Salsa (Mild), [Pinto Beans, Rice...	8.49
+
+4622 rows × 5 columns
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-7-what-was-the-quantity-of-the-most-expensive-item-ordered">Step 7. What was the quantity of the most expensive item ordered?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">chipo</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;item_price&#39;</span><span class="p">,</span><span class="n">ascending</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">		order_id	quantity	item_name			choice_description	item_price
+3598	1443		15			Chips and Fresh Tomato Salsa	NaN		44.25
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-8-how-many-times-were-a-veggie-salad-bowl-ordered">Step 8. How many times were a Veggie Salad Bowl ordered?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">chipo_salad</span> <span class="o">=</span> <span class="n">chipo</span><span class="p">[</span><span class="n">chipo</span><span class="o">.</span><span class="n">item_name</span> <span class="o">==</span> <span class="s1">&#39;Veggie Salad Bowl&#39;</span><span class="p">]</span>
+<span class="n">chipo_salad</span> <span class="c1"># 分步骤看一下，可以直接len(chipo_salad)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">	order_id	quantity	item_name	choice_description	item_price
+186	83	1	Veggie Salad Bowl	[Fresh Tomato Salsa, [Fajita Vegetables, Rice,...	11.25
+295	128	1	Veggie Salad Bowl	[Fresh Tomato Salsa, [Fajita Vegetables, Lettu...	11.25
+455	195	1	Veggie Salad Bowl	[Fresh Tomato Salsa, [Fajita Vegetables, Rice,...	11.25
+496	207	1	Veggie Salad Bowl	[Fresh Tomato Salsa, [Rice, Lettuce, Guacamole...	11.25
+960	394	1	Veggie Salad Bowl	[Fresh Tomato Salsa, [Fajita Vegetables, Lettu...	8.75
+1316	536	1	Veggie Salad Bowl	[Fresh Tomato Salsa, [Fajita Vegetables, Rice,...	8.75
+1884	760	1	Veggie Salad Bowl	[Fresh Tomato Salsa, [Fajita Vegetables, Rice,...	11.25
+2156	869	1	Veggie Salad Bowl	[Tomatillo Red Chili Salsa, [Fajita Vegetables...	11.25
+2223	896	1	Veggie Salad Bowl	[Roasted Chili Corn Salsa, Fajita Vegetables]	8.75
+2269	913	1	Veggie Salad Bowl	[Fresh Tomato Salsa, [Fajita Vegetables, Rice,...	8.75
+2683	1066	1	Veggie Salad Bowl	[Roasted Chili Corn Salsa, [Fajita Vegetables,...	8.75
+3223	1289	1	Veggie Salad Bowl	[Tomatillo Red Chili Salsa, [Fajita Vegetables...	11.25
+3293	1321	1	Veggie Salad Bowl	[Fresh Tomato Salsa, [Rice, Black Beans, Chees...	8.75
+4109	1646	1	Veggie Salad Bowl	[Tomatillo Red Chili Salsa, [Fajita Vegetables...	11.25
+4201	1677	1	Veggie Salad Bowl	[Fresh Tomato Salsa, [Fajita Vegetables, Black...	11.25
+4261	1700	1	Veggie Salad Bowl	[Fresh Tomato Salsa, [Fajita Vegetables, Rice,...	11.25
+4541	1805	1	Veggie Salad Bowl	[Tomatillo Green Chili Salsa, [Fajita Vegetabl...	8.75
+4573	1818	1	Veggie Salad Bowl	[Fresh Tomato Salsa, [Fajita Vegetables, Pinto...	8.75
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="nb">len</span><span class="p">(</span><span class="n">chipo</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">18
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-9-how-many-times-people-ordered-more-than-one-canned-soda">Step 9. How many times people ordered more than one Canned Soda?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">chipo_Canned_Soda</span> <span class="o">=</span> <span class="n">chipo</span><span class="p">[(</span><span class="n">chipo</span><span class="o">.</span><span class="n">item_name</span> <span class="o">==</span> <span class="s1">&#39;Canned Soda&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">chipo</span><span class="o">.</span><span class="n">quantity</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)]</span>
+
+<span class="c1"># chipo_Canned_Soda 可以分解步骤看一下</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">chipo_Canned_Soda</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="mi">20</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-05-03 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/python">Python</a>,&nbsp;<a href="/tags/pandas">Pandas</a>,&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90">数据分析</a></section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/pandas%E7%BB%83%E4%B9%A0_1_3/" class="prev" rel="prev" title="Pandas练习_1_3"><i class="fas fa-angle-left fa-fw"></i>Pandas练习_1_3</a></div>
+</div>
+<div class="comment"><div id="valine"></div><script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                new Valine({
+                    el: '#valine',
+                    appId: 'I9XpizqavRsEQxHDtMuuz1PY-MdYXbMMI',
+                    appKey: 'ndIPUlNEYk9QDaviag05PWhJ',placeholder: '你的评论 ...',avatar: 'robohash',pageSize: 10,lang: 'zh-cn',visitor: true,recordIP: true,});
+            });
+        </script>
+        <noscript>
+            Please enable JavaScript to view the <a href="https://valine.js.org/">comments powered by Valine.</a>
+        </noscript></div>
+    </article></div>
+            </main><footer class="footer">
+    <div class="copyright"><div class="copyright-line">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer"><i class="far fa-heart fa-fw"></i> LoveIt</a>
+        </div>
+
+        <div class="copyright-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Yanshen</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+</div><a href="#" class="dynamic-to-top animated faster" id="dynamic-to-top">
+            <i class="fas fa-chevron-up fa-fw"></i>
+        </a><script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lightGallery(document.getElementById('content'), {
+                selector: '.lightgallery',
+                speed: 400,
+                hideBarsDelay: 2000,
+                thumbnail: true,
+                exThumbImage: 'data-thumbnail',
+                thumbWidth: 80,
+                thumbContHeight: 80,
+            });
+        });
+    </script><link rel="stylesheet" href="/lib/valine/valine.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script src="/lib/valine/Valine.min.js"></script><script src="/lib/smooth-scroll/smooth-scroll.polyfills.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/js/theme.min.js"></script></body>
+</html>
