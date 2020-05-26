@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据科学 on 无人等候</title>
+    <link>https://imscba.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/</link>
+    <description>Recent content in 数据科学 on 无人等候</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Tue, 26 May 2020 09:35:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://imscba.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Road to Data Scientist</title>
+      <link>https://imscba.github.io/road-to-data-scientist/</link>
+      <pubDate>Tue, 26 May 2020 09:35:57 +0800</pubDate>
+      
+      <guid>https://imscba.github.io/road-to-data-scientist/</guid>
+      <description>2017年最全的数据科学学习计划（1） 在学习数据科学的过程中，收集到的资料，转载自腾讯云，自己稍作整理，共大家参考。 导读 希望这篇学习路线图对</description>
+    </item>
+    
+  </channel>
+</rss>

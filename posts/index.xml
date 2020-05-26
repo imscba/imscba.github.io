@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 14 May 2020 14:42:26 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2020 09:35:57 +0800</lastBuildDate>
     
 	<atom:link href="https://imscba.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Road to Data Scientist</title>
+      <link>https://imscba.github.io/road-to-data-scientist/</link>
+      <pubDate>Tue, 26 May 2020 09:35:57 +0800</pubDate>
+      
+      <guid>https://imscba.github.io/road-to-data-scientist/</guid>
+      <description>2017年最全的数据科学学习计划（1） 在学习数据科学的过程中，收集到的资料，转载自腾讯云，自己稍作整理，共大家参考。 导读 希望这篇学习路线图对</description>
+    </item>
     
     <item>
       <title>数据分析师面试经历复盘</title>
