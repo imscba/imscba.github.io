@@ -1,7 +1,5 @@
-# 2017年最全的数据科学学习计划
+# [最全的数据科学学习计划](https://cloud.tencent.com/developer/article/1102892)
 
-
-# [最全的数据科学学习计划]( https://cloud.tencent.com/developer/article/1102892)
 
 > *在学习数据科学的过程中，收集到的资料，转载自腾讯云，自己稍作整理，供大家参考。*
 >
